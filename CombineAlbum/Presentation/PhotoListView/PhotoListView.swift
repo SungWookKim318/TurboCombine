@@ -21,16 +21,12 @@ struct PhotoListView: View {
     static let spacing: CGFloat = 5
     
     static let columns: [GridItem] = Array(repeating: .init(.flexible()), count: Self.numberOfGrid)
-    // Bottom to top Scroll 구현하기
-    // 1. ScrollView와 LazyVStack을 뒤집어버리기. -> 안되네.
-    // 2. ScrollToBottom을 개발하기
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
                 ScrollView {
                     LazyVGrid(columns: Self.columns, spacing: Self.spacing) {
                         ForEach(viewModel.photos.reversed()) { item in
-                            // 항목의 너비를 계산
                             let itemWidth = (geometry.size.width - (Self.spacing * 3)) / CGFloat(Self.numberOfGrid)
                             
                             NavigationLink(destination: PhotoDetailView(id: item.id)) {

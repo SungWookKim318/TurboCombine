@@ -7,12 +7,6 @@
 
 import Foundation
 import UIKit
-// Need DTO?
-//struct PhotoItemViewData {
-//    let title: String
-//    let image: Data?
-//    let date: Date
-//}
 
 public enum PhotoListViewModelState {
     case idle
